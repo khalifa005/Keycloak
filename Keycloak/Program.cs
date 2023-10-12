@@ -104,6 +104,8 @@ namespace Keycloak
         });
       }
 
+      app.UseHttpsRedirection();
+      app.UseCors("AllowOrigin");
       app.UseAuthentication();
       app.UseAuthorization();
 
