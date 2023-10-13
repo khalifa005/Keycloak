@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { initKeycloak } from 'src/auth/init-keycloak';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [	
+    AppComponent,
+      ProductsComponent
+   ],
   imports: [
     BrowserModule,
     HttpClientModule,
