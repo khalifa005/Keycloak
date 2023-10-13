@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './products/products.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
       ProductsComponent
    ],

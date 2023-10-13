@@ -1,5 +1,5 @@
 {
-  "KEYCLOAK_URL": "${KEYCLOAK_URL}",
-  "KEYCLOAK_REALM": "${KEYCLOAK_REALM}",
-  "KEYCLOAK_CLIENT_ID": "${KEYCLOAK_CLIENT_ID}"
+  "KEYCLOAK_URL": "http://localhost:500",
+  "KEYCLOAK_REALM": "productionRealm",
+  "KEYCLOAK_CLIENT_ID": "angular-app-client"
 }

@@ -9,7 +9,7 @@ export const environment = {
   apiBaseUrl: 'https://localhost:44388/api/v1.0',
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US', 'ar-SA'],
-  configFile: '../config.json/config.dev.json'
+  configFile: 'config.dev.json'
 };
 
 /*
