@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { KeycloakService } from 'keycloak-angular';
+import { environment } from 'src/env/environment';
 
 @Component({
   selector: 'app-root',
@@ -37,6 +38,16 @@ export class AppComponent {
   }
 
   ngOnInit() {
+
+    if (environment.production) {
+      console.log("environment.production");
+      console.log(environment.apiBaseUrl);
+      }else{
+        console.log("server local");
+        console.log(environment.apiBaseUrl);
+
+      }
+
     this.http.get('https://localhost:44384/WeatherForecast', this.httpOptions).subscribe({
       next: (response) =>{
         console.log(response);
