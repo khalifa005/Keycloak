@@ -3,5 +3,4 @@ export const environment = {
   apiBaseUrl: 'http://domain',
   defaultLanguage: 'en-US',
   supportedLanguages: ['en-US', 'ar-SA'],
-  configFile: '../config.json/config.json'
 };

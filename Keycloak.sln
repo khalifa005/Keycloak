@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keycloak", "Keycloak\Keycloak.csproj", "{BCAD48D8-5FFC-4A16-9333-1A19D3FFD706}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KeycloakBasedOnOpenApi", "KeycloakBasedOnOpenApi\KeycloakBasedOnOpenApi.csproj", "{A115BE47-8939-45F1-B612-CCF3A252C45F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BCAD48D8-5FFC-4A16-9333-1A19D3FFD706}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCAD48D8-5FFC-4A16-9333-1A19D3FFD706}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCAD48D8-5FFC-4A16-9333-1A19D3FFD706}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A115BE47-8939-45F1-B612-CCF3A252C45F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A115BE47-8939-45F1-B612-CCF3A252C45F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A115BE47-8939-45F1-B612-CCF3A252C45F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A115BE47-8939-45F1-B612-CCF3A252C45F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
