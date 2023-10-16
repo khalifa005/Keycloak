@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgxPermissionsService } from 'ngx-permissions';
 import { environment } from 'src/env/environment';
 
 @Injectable({

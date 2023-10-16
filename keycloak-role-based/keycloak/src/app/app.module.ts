@@ -8,6 +8,7 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './products/products.component';
 import { NbThemeModule } from '@nebular/theme';
+import { NgxPermissionsModule } from 'ngx-permissions';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +20,7 @@ import { NbThemeModule } from '@nebular/theme';
     KeycloakAngularModule,
     AppRoutingModule,
     NbThemeModule.forRoot(),
+    NgxPermissionsModule.forRoot(),
 
   ],
   providers: [
