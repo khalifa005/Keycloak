@@ -1,4 +1,4 @@
-﻿namespace KeycloakBasedOnOpenApi.Helper
+namespace KeycloakBasedOnOpenApi.Helper
 {
   public static class KeycloakApis
   {
@@ -22,6 +22,7 @@
       //Return List of Groups members 
       public const string GetUserGroupById = "{keycloak_url}/admin/realms/{realm}/users/{user_id}/groups";
       public const string GetUserUsername = "{keycloak_url}/admin/realms/{realm}/users/?exact=true&username={username}";
+      public const string GetUsers = "{keycloak_url}/admin/realms/{realm}/users";
       public const string GetUserUsernameWithoutQueryString = "{keycloak_url}/admin/realms/{realm}/users?firstName={firstName}";
     }
   }

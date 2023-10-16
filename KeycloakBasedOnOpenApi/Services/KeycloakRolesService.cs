@@ -1,7 +1,8 @@
-﻿using KeycloakBasedOnOpenApi.Config;
+using KeycloakBasedOnOpenApi.Config;
 using KeycloakBasedOnOpenApi.Dto;
 using KeycloakBasedOnOpenApi.Helper;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Linq;
 
 namespace KeycloakBasedOnOpenApi.Services
 {
@@ -18,7 +19,7 @@ namespace KeycloakBasedOnOpenApi.Services
       _keycloackSettings = keycloackSettings;
     }
 
-    public async Task<List<KeycloakGroupDto>> GetGroupsByRoleName(string roleName, string keycloackAccessToken)
+    public async Task<List<KeycloakGroupDto>> GetAssignedGroupsForRoleByRoleName(string roleName, string keycloackAccessToken)
     {
       //we can replave the main URL in appsettings then just replace role, group ...
       var targetURL = KeycloakApis.Role.GetGroupsByRoleNameURL
@@ -31,8 +32,11 @@ namespace KeycloakBasedOnOpenApi.Services
       return roleGroups.Data;
     }
 
-    public async Task<List<KeycloakGroupDto>> GetGroupsByRoleNameTest(string roleName, string keycloackAccessToken)
+
+    public async Task<List<KeycloakGroupDto>> GetRoles(string roleName, string token)
     {
+      var keycloackAccessToken = token;
+
       //we can replave the main URL in appsettings then just replace role, group ...
       var targetURL = KeycloakApis.Role.GetGroupsByRoleNameURL
          .Replace(KeycloackApiParams.KeycloakUrl, _keycloackSettings.Value.URL)
@@ -43,6 +47,7 @@ namespace KeycloakBasedOnOpenApi.Services
 
       return roleGroups.Data;
     }
+
   }
 
 }
