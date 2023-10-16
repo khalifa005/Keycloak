@@ -7,7 +7,7 @@ import { initKeycloak } from 'src/auth/init-keycloak';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsComponent } from './products/products.component';
-
+import { NbThemeModule } from '@nebular/theme';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +17,9 @@ import { ProductsComponent } from './products/products.component';
     BrowserModule,
     HttpClientModule,
     KeycloakAngularModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NbThemeModule.forRoot(),
+
   ],
   providers: [
     {
