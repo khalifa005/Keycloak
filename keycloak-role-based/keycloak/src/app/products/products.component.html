@@ -1,3 +1,33 @@
 <p>
-  products works!
+  dynamic-content-based-on-user-groups will be appear here
 </p>
+
+<p
+*ngxPermissionsOnly="['/complain/add'];
+authorisedStrategy: 'show';
+unauthorisedStrategy: 'remove'" >
+this user can add complain
+</p>
+
+<p
+*ngxPermissionsOnly="['/complain/update'];
+authorisedStrategy: 'show';
+unauthorisedStrategy: 'remove'" >
+this user can update complain
+</p>
+
+<p
+*ngxPermissionsOnly="['/complain/view-history'];
+authorisedStrategy: 'show';
+unauthorisedStrategy: 'remove'" >
+this user can view-history complain
+</p>
+
+
+<p
+*ngxPermissionsOnly="['/complain/view'];
+authorisedStrategy: 'show';
+unauthorisedStrategy: 'remove'" >
+this user can view complain
+</p>
+

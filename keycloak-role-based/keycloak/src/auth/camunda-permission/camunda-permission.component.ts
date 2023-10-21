@@ -5,12 +5,13 @@ import { ApiResponse, GroupDto, UserGroupsDto, UserDto } from '../dtos/group-dto
 import { TreeItem, TreeviewComponent, TreeviewConfig, TreeviewItem } from '@treeview/ngx-treeview';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
 @Component({
-  selector: 'app-group-management',
-  templateUrl: './group-management.component.html',
-  styleUrls: ['./group-management.component.css']
+  selector: 'app-camunda-permission',
+  templateUrl: './camunda-permission.component.html',
+  styleUrls: ['./camunda-permission.component.css']
 })
-export class GroupManagementComponent implements OnInit , OnDestroy {
+export class CamundaPermissionComponent implements OnInit , OnDestroy {
 
   constructor(public apiService: AuthApisService,
     private router: Router,
@@ -20,32 +21,13 @@ export class GroupManagementComponent implements OnInit , OnDestroy {
 
   @ViewChild(TreeviewComponent, { static: false }) treeviewComponent!: TreeviewComponent;
 
-  selectedUserId!: string;
   showSubmitButton = false;
 
   ngOnInit() {
-    this.selectedUserId = this.route.snapshot.params['id'];
 
     this.getData();
 
-    this.apiService
-    .getUsers()
-      .subscribe({
-        next:(response:ApiResponse<UserDto[]>) => {
 
-       if(response.statusCode == 200 && response.data){
-        this.users = response.data;
-        this.selectedUser = this.users.find( x => x.id === this.selectedUserId );
-
-        console.log(response);
-       }else{
-         console.log(response);
-       }
-         },
-        error:(error:any)=> {
-          console.log(error);
-        }
-   });
   }
 
   ngOnDestroy() {
@@ -61,7 +43,7 @@ export class GroupManagementComponent implements OnInit , OnDestroy {
   private getData(): void {
 
     this.apiService
-    .getRepresentationUserGroupsById(this.selectedUserId)
+    .getGroups()
       .pipe(takeUntil(this.ngUnsubscribe))
       .subscribe({
         next:(response:ApiResponse<GroupDto[]>) => {
@@ -139,50 +121,5 @@ export class GroupManagementComponent implements OnInit , OnDestroy {
       }
 
 
-      saveUserGroupsIds(){
-
-        //-- Validate
-        if(this.treeviewComponent.selection.checkedItems.length <= 0){
-          // this.toastNotificationService.showToast(NotitficationsDefaultValues.Danger, title, 'Select at least one role function');
-          return;
-       }
-
-
-       if(!this.selectedUser){
-        //  this.toastNotificationService.showToast(NotitficationsDefaultValues.Danger, title, 'Select User');
-         return;
-       }
-
-       //--Collect Data
-       const userGroups : UserGroupsDto = {};
-        userGroups.userId = this.selectedUserId;
-
-        const checkedGroupIds: string [] = [];
-        this.treeviewComponent.items.every(x => x.correctChecked());
-
-        this.collectSelectedTreeIds(this.treeviewComponent.items ,checkedGroupIds);
-
-        console.log("collectSelectedTreeIds");
-        console.log(checkedGroupIds);
-        userGroups.groupIds = checkedGroupIds;
-
-        this.apiService
-    .saveRoleFunctions(userGroups)
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe({
-        next:(response:ApiResponse<any[]>) => {
-          this.router.navigateByUrl("/users");
-
-       if(response.statusCode == 200){
-
-       }else{
-       }
-         },
-        error:(error:any)=> {
-          console.log(error);
-        }
-   });
-
-      }
 
 }

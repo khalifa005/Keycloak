@@ -64,17 +64,17 @@ namespace Keycloak.Controllers
     }
 
 
-    [HttpGet("GetUserGroupsById{Id}")]
-    public async Task<ActionResult<List<KeycloakGroupDto>>> GetUserGroupsByUserId(string userId)
+    [HttpGet("GetUserGroupsById")]
+    public async Task<ActionResult<List<KeycloakGroupDto>>> GetUserGroupsByUserId([FromQuery]string userId)
     {
       var apiResponse = new ApiResponse<List<KeycloakGroupDto>>((int)HttpStatusCode.OK);
 
       var masterToekn = await _accessTokenService.GetAccessToken(Master: true);
       var userGroups = await _keycloakGroupService.GetMemberGroupsByUserId(userId, masterToekn);
 
-      var userGroupsAsFlatList = _keycloakGroupService.GetGroupsAsFlatList(userGroups);
+      //var userGroupsAsFlatList = _keycloakGroupService.GetGroupsAsFlatList(userGroups);
 
-      apiResponse.Data = userGroupsAsFlatList;
+      apiResponse.Data = userGroups;
 
       return Ok(apiResponse);
      

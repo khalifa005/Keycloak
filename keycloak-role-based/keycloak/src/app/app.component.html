@@ -10,8 +10,27 @@
     </h1>
   </div>
 </div>
-<div>
+<div class="row ">
   <button *ngIf="!authenticated" (click)="login()">Login</button>
   <button *ngIf="authenticated" (click)="logout()">Logout</button>
 </div>
+
+<div class="row " *ngIf="authenticated">
+  <button
+  class="col-md-6 offset-md-3 mt-5"
+  (click)="goToCamunda()"
+  translate>go To Camunda authorization</button>
+
+  <button
+  class="col-md-6 offset-md-3"
+  (click)="goToUsers()"
+  translate>go To users</button>
+
+  <button
+  class="col-md-6 offset-md-3"
+  (click)="goToComplain()"
+  >complains</button>
+
+</div>
+
 <router-outlet></router-outlet>

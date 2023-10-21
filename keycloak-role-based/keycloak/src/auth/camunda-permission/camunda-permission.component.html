@@ -1,0 +1,27 @@
+
+
+<h3>
+  Sync Keycloak with camunda authorization
+</h3>
+<p>Based on the groups attribute will filter the services with the defination key then update camunda permissiosn</p>
+
+<div class="row">
+    <div class="col-md-12">
+      <ngx-treeview
+      *ngIf="items"
+      [config]="config"
+      [items]="items"
+      [ngClass]=" 'ng-star-inserted-ar' "
+      (selectedChange)="onSelectedTreeChange($event)">
+      </ngx-treeview>
+    </div>
+
+    <button
+*ngIf="showSubmitButton"
+class="col-md-6 offset-md-3"
+type="submit"
+nbButton
+translate>Sync</button>
+
+
+</div>

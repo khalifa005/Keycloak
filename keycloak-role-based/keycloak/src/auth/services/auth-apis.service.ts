@@ -15,6 +15,7 @@ export class AuthApisService {
 
   constructor(private http : HttpClient ,
     private router: Router,
+
     private permissionsService: NgxPermissionsService
     ) {
 
@@ -25,7 +26,7 @@ export class AuthApisService {
  }
 
  getUserGroupsByUserId(id:string){
-  let url = "GetUserGroupsById?Id="+id;
+  let url = "GetUserGroupsById?userId="+id;
    return this.http.get<any>(`${this.baseUrl}/`+url);
  }
 
@@ -43,6 +44,17 @@ export class AuthApisService {
 
  saveRoleFunctions(userGroups: UserGroupsDto): Observable<any> {
   return this.http.put<any>(`${this.baseUrl}/UpdateUserGroups`,userGroups);
+}
+
+
+loadPermissions(userGroups : string []){
+  //-- Remove All Permessions
+  this.permissionsService.flushPermissions();
+
+  //-- load new functions
+  this.permissionsService.loadPermissions(userGroups, (permissionName, permissionStore) => {
+    return !!permissionStore[permissionName as string];
+   });
 }
 
 

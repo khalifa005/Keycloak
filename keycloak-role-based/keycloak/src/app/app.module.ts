@@ -13,6 +13,7 @@ import { GroupManagementComponent } from 'src/auth/group-management/group-manage
 import { TreeviewModule } from '@treeview/ngx-treeview';
 import { TableModule } from 'ngx-easy-table';
 import { UserComponent } from 'src/auth/user/user.component';
+import { CamundaPermissionComponent } from 'src/auth/camunda-permission/camunda-permission.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { UserComponent } from 'src/auth/user/user.component';
       ProductsComponent,
       GroupManagementComponent,
       UserComponent,
+      CamundaPermissionComponent
    ],
   imports: [
     BrowserModule,
