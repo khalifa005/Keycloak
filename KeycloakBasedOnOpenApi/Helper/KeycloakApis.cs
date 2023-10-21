@@ -21,6 +21,9 @@ namespace KeycloakBasedOnOpenApi.Helper
     {
       //Return List of Groups members 
       public const string GetUserGroupById = "{keycloak_url}/admin/realms/{realm}/users/{user_id}/groups";
+      public const string DeleteUserGroupById = "{keycloak_url}/admin/realms/{realm}/users/{user_id}/groups/{group_id}";
+      public const string UpdateUserGroupById = "{keycloak_url}/admin/realms/{realm}/users/{user_id}/groups/{group_id}";
+
       public const string GetUserUsername = "{keycloak_url}/admin/realms/{realm}/users/?exact=true&username={username}";
       public const string GetUsers = "{keycloak_url}/admin/realms/{realm}/users";
       public const string GetUserUsernameWithoutQueryString = "{keycloak_url}/admin/realms/{realm}/users?firstName={firstName}";

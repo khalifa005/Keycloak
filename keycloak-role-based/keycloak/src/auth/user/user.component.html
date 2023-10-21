@@ -1,0 +1,35 @@
+<p>
+  user works!
+</p>
+
+<div class="columns" >
+  <div class="column col-12" >
+    <ngx-table
+      [configuration]="configuration"
+      [data]="data"
+      [columns]="columns">
+
+      <ng-template let-row let-index="index">
+
+        <td>
+          <h5>{{ row.id }}</h5>
+        </td>
+        <td>
+          <h5>#{{ row.username }}</h5>
+        </td>
+        <td>
+          <h5>{{ row.firstName }}</h5>
+        </td>
+        <td>
+          <button nbButton size="small" status="primary"
+          id="expandButton-{{ index }}"
+          (click)="onEditDialogClicked(row.id)"
+          > Edit user groups
+          </button>
+        </td>
+
+      </ng-template>
+    </ngx-table>
+
+  </div>
+</div>

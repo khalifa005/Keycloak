@@ -1,6 +1,6 @@
-﻿namespace KeycloakBasedOnOpenApi.Dto
+namespace KeycloakBasedOnOpenApi.Dto
 {
-  public class UserFromKeycloakGroupDto
+  public class KeycloakUserDto
   {
     public string Id { get; set; }
     public long CreatedTimestamp { get; set; }

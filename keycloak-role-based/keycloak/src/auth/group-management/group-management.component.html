@@ -1,0 +1,30 @@
+
+
+<h3  *ngIf="selectedUser">
+  Selected username: {{selectedUser.username }}
+</h3>
+
+<p>
+  group-management : Select user groups for system authorization
+</p>
+<div class="row">
+    <div class="col-md-12">
+      <ngx-treeview
+      *ngIf="items"
+      [config]="config"
+      [items]="items"
+      [ngClass]=" 'ng-star-inserted-ar' "
+      (selectedChange)="onSelectedTreeChange($event)">
+      </ngx-treeview>
+    </div>
+
+    <button
+*ngIf="showSubmitButton"
+class="col-md-6 offset-md-3"
+type="submit"
+nbButton
+(click)="saveUserGroupsIds()"
+translate>submit</button>
+
+
+</div>

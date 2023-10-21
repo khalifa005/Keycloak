@@ -3,6 +3,8 @@ using Newtonsoft.Json;
 namespace KeycloakBasedOnOpenApi.Dto
 {
 
+
+
   public class KeycloakGroupDto
   {
     public string Id { get; set; }
@@ -10,7 +12,13 @@ namespace KeycloakBasedOnOpenApi.Dto
     public string Path { get; set; }
     public Attributes Attributes { get; set; }
     public List<object> RealmRoles { get; set; }
-    public List<SubGroup> SubGroups { get; set; }
+    public bool Checked { get; set; } = false;
+
+    public List<KeycloakGroupDto> SubGroups { get; set; }
+
+   
+
+    
   }
 
   public class Attributes
@@ -37,5 +45,15 @@ namespace KeycloakBasedOnOpenApi.Dto
     public List<SubGroup> SubGroups { get; set; }
     public string InherteedDepartmentId { get; set; } //no need
   }
+
+  public class UserGroupsDto
+  {
+    public string UserId { get; set; }
+    public List<string> GroupIds { get; set; } = new List<string>();
+  }
 }
+
+
+
+
 

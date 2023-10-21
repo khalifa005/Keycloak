@@ -136,93 +136,109 @@ namespace KeycloakBasedOnOpenApi.Services
       }
     }
 
+    public async Task<ApiResponse<T>> DeleteRequestAsync<T>(string Endpoint, string token) where T : class
+    {
+      var apiResponse = new ApiResponse<T>((int)HttpStatusCode.OK);
 
-    //public async Task<Result<T>> PostRequestAsyncForm<T>(string Endpoint, HttpModelDTO content, string token, bool isAttachments = false)
-    //{
-    //  HttpRequestMessage httpRequestMessage = new();
+      HttpRequestMessage httpRequestMessage = new();
 
-    //  httpRequestMessage.Method = new HttpMethod(HttpMethod.Post.ToString());
+      httpRequestMessage.Method = new HttpMethod(HttpMethod.Delete.ToString());
 
-    //  httpRequestMessage.RequestUri = new Uri(Endpoint);
-
-    //  if (isAttachments)
-    //  {
-    //    var multipartContent = new MultipartFormDataContent();
-
-    //    multipartContent.Add(new StringContent(JsonConvert.SerializeObject(content.Data)), "data");
-
-    //    foreach (var item in content.NewFiles)
-    //    {
-    //      multipartContent.Add(new StreamContent(item.File.OpenReadStream()), item.NameOfFile, item.File.FileName);
-    //    }
-
-    //    httpRequestMessage.Content = multipartContent;
-    //  }
-    //  else
-    //  {
-    //    var serializedObject = JsonConvert.SerializeObject(content.Data);
-
-    //    httpRequestMessage.Content = new StringContent(serializedObject);
-
-    //    httpRequestMessage.Content.Headers.ContentType
-    //    = new System.Net.Http.Headers.MediaTypeHeaderValue(MediaTypeNames.Application.Json);
-    //  }
-
-    //  if (!string.IsNullOrEmpty(token))
-    //  {
-    //    httpRequestMessage.Headers.Authorization
-    //   = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-    //  }
-
-    //  var result = await _http.SendAsync(httpRequestMessage);
-
-    //  var responde = await result.Content.ReadAsStringAsync();
+      httpRequestMessage.RequestUri = new Uri(Endpoint);
 
 
-    //  if (result.StatusCode == System.Net.HttpStatusCode.InternalServerError ||
-    //      result.StatusCode == System.Net.HttpStatusCode.BadRequest ||
-    //      result.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-    //  {
-    //    System.Console.WriteLine(responde);
-    //    return Result<T>.False(responde);
-    //  }
+      if (!string.IsNullOrEmpty(token))
+      {
+        httpRequestMessage.Headers.Authorization
+           = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+      }
 
-    //  try
-    //  {
-    //    var res = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(responde);
-    //    //var res = Newtonsoft.Json.JsonConvert.DeserializeObject<Result<T>>(responde);
-    //    return Result<T>.True(res);
-    //  }
-    //  catch (System.Exception e)
-    //  {
-    //    System.Console.WriteLine(e.Message + e.StackTrace);
-    //    System.Console.WriteLine(responde);
-    //    return Result<T>.False(responde);
-    //  }
-    //}
+      var result = await _http.SendAsync(httpRequestMessage);
+
+      dynamic content = null;
+      content = await result.Content.ReadAsStringAsync();
 
 
-    //public Dictionary<string, IFormFile> PrepareProperties<T>(Type classType, T model)
-    //{
-    //  Dictionary<string, IFormFile> propertiesAsDictionary = new Dictionary<string, IFormFile>();
 
-    //  var properties = classType.GetProperties();
+      if (result.StatusCode == HttpStatusCode.InternalServerError ||
+         result.StatusCode == HttpStatusCode.BadRequest ||
+         result.StatusCode == HttpStatusCode.Unauthorized)
+      {
+        Console.WriteLine(content);
 
-    //  foreach (PropertyInfo info in properties)
-    //  {
-    //    var x = info.GetValue(model, null);
+        apiResponse.StatusCode = (int)result.StatusCode;
+        return apiResponse;
+      }
 
-    //    if (x is IFormFile)
-    //    {
-    //      IFormFile xx = x as IFormFile;
 
-    //      propertiesAsDictionary.Add(info.Name, xx);
-    //    }
+      try
+      {
 
-    //  }
-    //  return propertiesAsDictionary;
+        return apiResponse;
 
-    //}
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e.Message + e.StackTrace);
+        Console.WriteLine(content);
+        apiResponse.ErrorMessage = e.Message;
+
+        return apiResponse;
+
+      }
+    }
+
+    public async Task<ApiResponse<T>> UpdateRequestAsync<T>(string Endpoint, string token) where T : class
+    {
+      var apiResponse = new ApiResponse<T>((int)HttpStatusCode.OK);
+
+      HttpRequestMessage httpRequestMessage = new();
+
+      httpRequestMessage.Method = new HttpMethod(HttpMethod.Put.ToString());
+
+      httpRequestMessage.RequestUri = new Uri(Endpoint);
+
+
+      if (!string.IsNullOrEmpty(token))
+      {
+        httpRequestMessage.Headers.Authorization
+           = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+      }
+
+      var result = await _http.SendAsync(httpRequestMessage);
+
+      dynamic content = null;
+      content = await result.Content.ReadAsStringAsync();
+
+
+
+      if (result.StatusCode == HttpStatusCode.InternalServerError ||
+         result.StatusCode == HttpStatusCode.BadRequest ||
+         result.StatusCode == HttpStatusCode.Unauthorized)
+      {
+        Console.WriteLine(content);
+
+        apiResponse.StatusCode = (int)result.StatusCode;
+        return apiResponse;
+      }
+
+
+      try
+      {
+
+        return apiResponse;
+
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e.Message + e.StackTrace);
+        Console.WriteLine(content);
+        apiResponse.ErrorMessage = e.Message;
+
+        return apiResponse;
+
+      }
+    }
 
 
   }

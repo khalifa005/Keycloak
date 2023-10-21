@@ -407,3 +407,6 @@ testem.log
 Thumbs.db
 /keycloak-role-based/keycloak/.angular/cache/16.2.6
 /keycloak-role-based/keycloak/.vscode
+/e-proc/.angular/cache/16.2.1
+/e-proc/.vscode
+/e-proc/dist/apps/host
